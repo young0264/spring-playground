@@ -2,10 +2,13 @@ package spring.playground.basic.member;
 
 import lombok.NoArgsConstructor;
 
-public class MemberServiceImpl implements MemberService{
+public class MemberServiceImpl implements MemberService {
 
-    //TODO : 추후 리팩토링 부분이겟찌
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberServiceImpl(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
 
     @Override
     public void join(Member member) {

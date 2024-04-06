@@ -1,11 +1,11 @@
 package spring.playground.basic.member;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MemoryMemberRepository implements MemberRepository{
 
-    private static Map<Long, Member> store = new HashMap<>(); // 일단 db대신 Map사용
+    private static Map<Long, Member> store = new ConcurrentHashMap<>(); // 일단 db대신 Map사용
 
     @Override
     public void save(Member member) {
