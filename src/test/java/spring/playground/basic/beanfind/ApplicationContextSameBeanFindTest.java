@@ -3,11 +3,9 @@ package spring.playground.basic.beanfind;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoUniqueBeanDefinitionException;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import spring.playground.basic.AppConfig;
 import spring.playground.basic.member.MemberRepository;
 import spring.playground.basic.member.MemoryMemberRepository;
 
