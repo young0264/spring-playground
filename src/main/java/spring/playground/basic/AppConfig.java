@@ -3,7 +3,6 @@ package spring.playground.basic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import spring.playground.basic.discount.DiscountPolicy;
-import spring.playground.basic.discount.FixDiscountPolicy;
 import spring.playground.basic.discount.RateDiscountPolicy;
 import spring.playground.basic.member.MemberRepository;
 import spring.playground.basic.member.MemberService;

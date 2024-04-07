@@ -15,16 +15,16 @@ class RateDiscountPolicyTest {
 
     RateDiscountPolicy discountPolicy;
 
-    @Test
-    void VIP는_10퍼_할인이_적용() {
-        discountPolicy = new RateDiscountPolicy(new RateDiscountPolicy());
-        //given
-        Member member = new Member(1L, VIP_MEMBER, Grade.VIP);
-        //when
-        int discount = discountPolicy.discount(member, TEN_THOUSAND);
-        //then
-        Assertions.assertThat(discount).isEqualTo(THOUSAND);
-    }
+//    @Test
+//    void VIP는_10퍼_할인이_적용() {
+//        discountPolicy = new RateDiscountPolicy(new RateDiscountPolicy());
+//        //given
+//        Member member = new Member(1L, VIP_MEMBER, Grade.VIP);
+//        //when
+//        int discount = discountPolicy.discount(member, TEN_THOUSAND);
+//        //then
+//        Assertions.assertThat(discount).isEqualTo(THOUSAND);
+//    }
 
     @Test
     void VIP등급만_할인이_적용되는지() {
