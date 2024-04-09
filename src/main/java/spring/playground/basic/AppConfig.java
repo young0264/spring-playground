@@ -15,20 +15,25 @@ import spring.playground.basic.order.OrderServiceImpl;
 @Configuration
 public class AppConfig {
 
+    // memberService, orderService 모두 memberRepository를 바라봄
+    // -> 따라서 구현체쪽에 getter 메서드 추가.
     @Bean
     public MemberService memberService() {
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public OrderService orderService() {
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(
                 memberRepository(),
                 discountPolicy());
     }
 
-    @Bean
+    @Bean // 스프링 컨테이너가 spring bean에 등록하기위해 @Bean이 붙어있는 memberRepository 호출
     public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
