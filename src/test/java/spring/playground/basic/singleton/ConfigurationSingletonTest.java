@@ -29,4 +29,15 @@ public class ConfigurationSingletonTest {
 
     }
 
+    @Test
+    void configurationDeep() {
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        //AppConfig도 스프링 빈으로 등록됨
+        AppConfig bean = ac.getBean(AppConfig.class);
+
+        //CGLIB 라이브러리를 사용해 생긴 다른 클래스를 스프링 빈으로 등록한 주소값이 나옴. ex) AppConfig@CGLIB
+        System.out.println("bean : " + bean.getClass());
+    }
+
 }
