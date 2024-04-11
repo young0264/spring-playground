@@ -1,9 +1,11 @@
 package spring.playground.basic.discount;
 
+import org.springframework.stereotype.Component;
 import spring.playground.basic.member.Grade;
 import spring.playground.basic.member.Member;
 
 //정률 할인정책
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountPercent = 10; //10% 할인
