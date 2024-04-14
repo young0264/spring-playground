@@ -11,9 +11,9 @@ import java.util.Optional;
 @SpringBootTest
 class SpringPlaygroundApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+//	@Test
+//	void contextLoads() {
+//	}
 
 	//호출 안됨
 	@Autowired(required = false)

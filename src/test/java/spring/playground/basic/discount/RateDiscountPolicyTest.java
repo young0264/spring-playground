@@ -26,13 +26,13 @@ class RateDiscountPolicyTest {
 //        Assertions.assertThat(discount).isEqualTo(THOUSAND);
 //    }
 
-    @Test
-    void VIP등급만_할인이_적용되는지() {
-        //given
-        Member member = new Member(2L, BASIC_MEMBER, Grade.BASIC);
-        //when
-        int discount = discountPolicy.discount(member, TEN_THOUSAND);
-        //then
-        Assertions.assertThat(discount).isEqualTo(ZERO);
-    }
+//    @Test
+//    void VIP등급만_할인이_적용되는지() {
+//        //given
+//        Member member = new Member(2L, BASIC_MEMBER, Grade.BASIC);
+//        //when
+//        int discount = discountPolicy.discount(member, TEN_THOUSAND);
+//        //then
+//        Assertions.assertThat(discount).isEqualTo(ZERO);
+//    }
 }

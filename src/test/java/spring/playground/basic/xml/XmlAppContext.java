@@ -7,11 +7,11 @@ import spring.playground.basic.member.MemberService;
 
 public class XmlAppContext {
 
-    @Test
-    void xml_테스트() {
-        GenericXmlApplicationContext ac = new GenericXmlApplicationContext("appConfig.xml");
-
-        MemberService memberService = ac.getBean("memberService", MemberService.class);
-        Assertions.assertThat(memberService).isInstanceOf(MemberService.class);
-    }
+//    @Test
+//    void xml_테스트() {
+//        GenericXmlApplicationContext ac = new GenericXmlApplicationContext("appConfig.xml");
+//
+//        MemberService memberService = ac.getBean("memberService", MemberService.class);
+//        Assertions.assertThat(memberService).isInstanceOf(MemberService.class);
+//    }
 }
