@@ -56,7 +56,7 @@ public class ApplicationContextExtendsFindTest {
     // getBeansOfType 의 key는 자식타입으로 되는구나
     //Return the bean instances that match the given object type (including subclasses),
     @Test
-    void 부모타입으로_모두_조회() {
+    void 부모타입으로_모두_조회() { //Map으로 다 받기
         Map<String, DiscountPolicy> beansOfType = ac.getBeansOfType(DiscountPolicy.class);
         assertThat(beansOfType.size()).isEqualTo(2);
 
@@ -67,7 +67,7 @@ public class ApplicationContextExtendsFindTest {
     }
 
     @Test
-    void 최상위_부모타입인_Object_모두_조회() {
+    void 최상위_부모타입인_Object_모두_조회() { //Map으로 다 받기
         Map<String, Object> beansOfType = ac.getBeansOfType(Object.class);
         for (String key : beansOfType.keySet()) {
             System.out.println("key : "+ key + " value : "+ beansOfType.get(key));
