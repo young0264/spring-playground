@@ -1,9 +1,9 @@
 package spring.playground.basic.lifecycle;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-public class NetworkClient implements InitializingBean, DisposableBean {
+public class NetworkClient {
     private String url;
 
     public NetworkClient() {
@@ -26,20 +26,35 @@ public class NetworkClient implements InitializingBean, DisposableBean {
     }
 
     //서비스 종료시 호출
-    public void disconnect() {
+    public void disConnect() {
         System.out.println("close: " + url);
     }
 
-    @Override
-    public void destroy() throws Exception {
-        disconnect();
+    public void init() {
+        System.out.println("NetworkClient.init");
+        connect();
+        call("초기화 연결 메시지");
     }
 
-    @Override // bean이 초기화 되고 실행
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("afterPropertiesSet start");
-        connect();
-        call("초기화 연결 메시지입니다.");
-        System.out.println("afterPropertiesSet end");
+    public void close() {
+        System.out.println("NetworkClient.close");
+        disConnect();
     }
+
+//    @Override
+//    public void destroy() throws Exception {
+//        disconnect();
+//    }
+//
+//    @Override // bean이 초기화 되고 실행
+//    public void afterPropertiesSet() throws Exception {
+//        System.out.println("afterPropertiesSet start");
+//        connect();
+//        call("초기화 연결 메시지입니다.");
+//        System.out.println("afterPropertiesSet end");
+//    }
+
+
+
 }
+
