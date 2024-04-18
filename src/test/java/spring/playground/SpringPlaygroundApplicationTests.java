@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import spring.playground.basic.member.Member;
+import spring.playground.basic.order.OrderServiceImpl;
 
 import java.util.Optional;
 
@@ -20,7 +21,7 @@ class SpringPlaygroundApplicationTests {
 	public void setNoBean1(Member member) {
 		System.out.println("setNoBean1 = " + member);
 	}
-	//null 호출
+	//	null 호출
 	@Autowired
 	public void setNoBean2(@Nullable Member member) {
 		System.out.println("setNoBean2 = " + member);
@@ -30,6 +31,12 @@ class SpringPlaygroundApplicationTests {
 	public void setNoBean3(Optional<Member> member) { //Optional 안티패턴
 		System.out.println("setNoBean3 = " + member);
 	}
+
+//	@Test
+//	void createOrder() {
+//		OrderServiceImpl orderService = new OrderServiceImpl();
+//		orderService.createOrder(1L, "itemA", 10000);
+//	}
 
 
 }

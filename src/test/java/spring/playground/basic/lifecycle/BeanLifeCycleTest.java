@@ -16,9 +16,10 @@ class BeanLifeCycleTest {
         ac.close(); //스프링 컨테이너를 종료, ConfigurableApplicationContext 필요
     }
 
+
 //    @Configuration
 //    static class LifeCycleConfig {
-//        @Bean
+//        @Bean(initMethod = "init", destroyMethod = "close")
 //        public NetworkClient networkClient() {
 //            NetworkClient networkClient = new NetworkClient();
 //            networkClient.setUrl("http://hello-spring.dev");
@@ -28,7 +29,7 @@ class BeanLifeCycleTest {
 
     @Configuration
     static class LifeCycleConfig {
-        @Bean(initMethod = "init", destroyMethod = "close")
+        @Bean
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("http://hello-spring.dev");
