@@ -3,10 +3,13 @@ package spring.playground.basic.scope;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,11 +28,19 @@ public class PrototypeProviderTest {
         int count2 = clientBean2.logic();
         assertThat(count2).isEqualTo(1);
     }
-    static class ClientBean {
+    static class ClientBean { // 싱글톤인 ClientBean 초기화 시점에 ApplicationContext 을 주입받음(테스트 어렵, 스프링컨테이너에 종속적인 코드)
+//        @Autowired
+//        private ApplicationContext ac;
+//        public int logic() {
+//            PrototypeBean prototypeBean = ac.getBean(PrototypeBean.class);
+//            prototypeBean.addCount();
+//            int count = prototypeBean.getCount();
+//            return count;
+//        }
         @Autowired
-        private ApplicationContext ac;
+        private ObjectProvider<PrototypeBean> prototypeBeanProvider;
         public int logic() {
-            PrototypeBean prototypeBean = ac.getBean(PrototypeBean.class);
+            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
             prototypeBean.addCount();
             int count = prototypeBean.getCount();
             return count;

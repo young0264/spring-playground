@@ -5,6 +5,7 @@ import jakarta.annotation.PreDestroy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
@@ -45,6 +46,7 @@ public class SingletonWithPrototypeTest1 {
     }
 
     static class ClientBean { // 기본 : singleton
+        // ClientBean이 PrototypeBean 자체에 의존하는 것이 의도치 않은 prototype scope 동작을 일으킬 수 있음.
         private final PrototypeBean prototypeBean;
 
         @Autowired
