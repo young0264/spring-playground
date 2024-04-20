@@ -1,6 +1,7 @@
 package spring.playground.basic.order;
 
 import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,8 @@ public class OrderServiceImpl implements OrderService {
 
     //생성자에 있는 파라미터들 모두 spring bean 저장소에 bean으로 등록해줌(component scan시)
     //생성자가 1개일시 @Autowired생략 가능
+
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository,
                             @MainDiscountPolicy DiscountPolicy discountPolicy) {  // 외부로부터 결정
         this.memberRepository = memberRepository;
