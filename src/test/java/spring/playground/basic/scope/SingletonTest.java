@@ -13,8 +13,11 @@ public class SingletonTest {
 
     @Test
     public void singletonBeanFind() {
+        System.out.println("before make singletone bean container");
         AnnotationConfigApplicationContext ac = new
                 AnnotationConfigApplicationContext(SingletonBean.class);
+        System.out.println("after make singletone bean container");
+
         SingletonBean singletonBean1 = ac.getBean(SingletonBean.class);
         SingletonBean singletonBean2 = ac.getBean(SingletonBean.class);
         System.out.println("singletonBean1 = " + singletonBean1);
@@ -26,7 +29,7 @@ public class SingletonTest {
     @Scope("singleton")
     static class SingletonBean {
         @PostConstruct
-        public void init() {
+        public void init() { // 싱글톤 socpe에서는 '스프링 컨테이너 생성 시점에' 초기화 메서드가 실행됨.
             System.out.println("SingletonBean.init");
         }
         @PreDestroy
