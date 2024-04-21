@@ -2,6 +2,7 @@ package spring.playground.basic.scope;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import jakarta.inject.Provider;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,8 @@ public class PrototypeProviderTest {
         assertThat(count2).isEqualTo(1);
     }
     static class ClientBean { // 싱글톤인 ClientBean 초기화 시점에 ApplicationContext 을 주입받음(테스트 어렵, 스프링컨테이너에 종속적인 코드)
+
+        /** #1. 스프링컨테이너 자체를 의존성 */
 //        @Autowired
 //        private ApplicationContext ac;
 //        public int logic() {
@@ -37,10 +40,22 @@ public class PrototypeProviderTest {
 //            int count = prototypeBean.getCount();
 //            return count;
 //        }
+
+        /** #2. ObjectProvider 사용 */
+//        @Autowired
+//        private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+//        public int logic() {
+//            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
+//            prototypeBean.addCount();
+//            int count = prototypeBean.getCount();
+//            return count;
+//        }
+
+        /** #3. jakarta.inject.Provider 사용 */
         @Autowired
-        private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+        private Provider<PrototypeBean> provider;
         public int logic() {
-            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
+            PrototypeBean prototypeBean = provider.get();
             prototypeBean.addCount();
             int count = prototypeBean.getCount();
             return count;
