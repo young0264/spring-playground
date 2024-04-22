@@ -1,6 +1,7 @@
 package spring.playground.basic.annotation;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 
 import java.lang.annotation.*;
 
@@ -9,6 +10,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Qualifier("mainDiscountPolicy")
+//@Primary
 public @interface MainDiscountPolicy {
 
 }

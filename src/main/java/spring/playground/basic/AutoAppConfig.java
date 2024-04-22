@@ -26,8 +26,8 @@ import spring.playground.basic.member.MemoryMemberRepository;
                 classes = Configuration.class)) // 미리 생성해둔 @Configuration관련 정보를 등록하지 않기 위해.
 public class AutoAppConfig {
 
-    @Bean(name = "memoryMemberRepository") // 수동빈이 우선권을 가져서 자동빈을 오버라이딩 해버림.
-    public MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
-    }
+//    @Bean(name = "memoryMemberRepository") // 수동빈이 우선권을 가져서 자동빈을 오버라이딩 해버림.
+//    public MemberRepository memberRepository() {
+//        return new MemoryMemberRepository();
+//    }
 }

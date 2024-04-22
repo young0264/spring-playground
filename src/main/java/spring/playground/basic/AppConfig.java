@@ -12,7 +12,7 @@ import spring.playground.basic.order.OrderService;
 import spring.playground.basic.order.OrderServiceImpl;
 
 /** 객체를 구성(configuration) 하는 영역 */
-@Configuration // CGLIB 기술을 사용케 함, 주석시에 스프링컨테이너에 싱글톤으로 보장 X
+//@Configuration // CGLIB 기술을 사용, 주석시에 스프링 컨테이너에 싱글톤으로 보장 X
 public class AppConfig {
 
     // memberService, orderService 모두 memberRepository를 바라봄
