@@ -1,4 +1,4 @@
-package spring.playground.advanced.app.v0;
+package spring.playground.advanced.app.v1;
 
 
 import lombok.RequiredArgsConstructor;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class OrderRepositoryV0 {
+public class OrderRepositoryV1 {
 
     public void save(String itemId) {
         if (itemId.equals("ex")) {
