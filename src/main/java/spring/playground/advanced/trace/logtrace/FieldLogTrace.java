@@ -14,20 +14,26 @@ public class FieldLogTrace implements LogTrace {
 
     private TraceId traceIdHolder; //traceId 동기화, 동시성 이슈 발생
 
-
     @Override
     public TraceStatus begin(String message) {
-        return null;
+        syncTraceId();
+        TraceId traceId = traceIdHolder;
+        long startTimeMs = System.currentTimeMillis();
+        log.info("[{}] {}, {}", traceId.getId(),
+                              addSpace(START_PREFIX,
+                                       traceId.getLevel()),
+                              message);
+        return new TraceStatus(traceId, startTimeMs, message);
     }
 
     @Override
     public void end(TraceStatus status) {
-
+        complete(status, null);
     }
 
     @Override
     public void exception(TraceStatus status, Exception e) {
-
+        complete(status, e);
     }
 
     private void complete(TraceStatus status, Exception e) {
@@ -35,12 +41,17 @@ public class FieldLogTrace implements LogTrace {
         long resultTimeMs = stopTimeMs - status.getStartTimeMs();
         TraceId traceId = status.getTraceId();
         if (e == null) {
-            log.info("[{}] {}{} time={}ms", traceId.getId(),
-                    addSpace(COMPLETE_PREFIX, traceId.getLevel()), status.getMessage(),
+            log.info("[{}] {}, {} time={}ms",
+                    traceId.getId(),
+                    addSpace(COMPLETE_PREFIX, traceId.getLevel()),
+                    status.getMessage(),
                     resultTimeMs);
         } else {
-            log.info("[{}] {}{} time={}ms ex={}", traceId.getId(),
-                    addSpace(EX_PREFIX, traceId.getLevel()), status.getMessage(), resultTimeMs,
+            log.info("[{}] {}, {} time={}ms ex={}",
+                    traceId.getId(),
+                    addSpace(EX_PREFIX, traceId.getLevel()),
+                    status.getMessage(),
+                    resultTimeMs,
                     e.toString());
         }
         releaseTraceId();
