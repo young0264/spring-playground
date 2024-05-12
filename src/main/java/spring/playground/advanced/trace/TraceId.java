@@ -1,10 +1,13 @@
 package spring.playground.advanced.trace;
 
+import lombok.ToString;
+
 import java.util.UUID;
 
 /**
  * transaction ID(UUID 사용) 와 depth를 표현하는 클래스
  **/
+@ToString
 public class TraceId {
     private String id;
     private int level;
