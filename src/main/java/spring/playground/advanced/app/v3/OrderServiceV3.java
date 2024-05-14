@@ -1,4 +1,4 @@
-package spring.playground.advanced.app.v3.v2;
+package spring.playground.advanced.app.v3;
 
 
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package spring.playground.advanced.app.v3.v2;
+package spring.playground.advanced.app.v3;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import spring.playground.advanced.trace.TraceStatus;
-import spring.playground.advanced.trace.log.LogTraceV2;
 import spring.playground.advanced.trace.logtrace.LogTrace;
 
 @Slf4j

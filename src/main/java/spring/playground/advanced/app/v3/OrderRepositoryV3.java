@@ -1,10 +1,11 @@
-package spring.playground.advanced.app.v3.v2;
+package spring.playground.advanced.app.v3;
 
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import spring.playground.advanced.trace.TraceId;
 import spring.playground.advanced.trace.TraceStatus;
+import spring.playground.advanced.trace.log.LogTraceV2;
 import spring.playground.advanced.trace.logtrace.LogTrace;
 
 @Repository
