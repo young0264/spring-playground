@@ -1,32 +1,25 @@
-package spring.playground.advanced.trace.logtrace;
+package spring.playground.proxy.trace.logtrace;
 
 import lombok.extern.slf4j.Slf4j;
-import spring.playground.advanced.trace.TraceId;
-import spring.playground.advanced.trace.TraceStatus;
-
-import java.util.concurrent.ExecutorService;
+import spring.playground.proxy.trace.TraceId;
+import spring.playground.proxy.trace.TraceStatus;
 
 @Slf4j
-public class ThreadLocalLogTrace implements LogTrace{
+public class ThreadLocalLogTrace implements LogTrace {
 
     private static final String START_PREFIX = "-->";
     private static final String COMPLETE_PREFIX = "<--";
     private static final String EX_PREFIX = "<X-";
 
-//    private ThreadLocal<TraceId> traceIdHolder; //traceId 동기화, 동시성 이슈 발생
     private ThreadLocal<TraceId> traceIdHolder = new ThreadLocal<>();
-
 
     @Override
     public TraceStatus begin(String message) {
         syncTraceId();
         TraceId traceId = traceIdHolder.get();
-        log.info("traceID : " + traceId.toString());
         Long startTimeMs = System.currentTimeMillis();
-        log.info("[{}] {}{}",
-                traceId.getId(),
-                addSpace(START_PREFIX, traceId.getLevel()),
-                message);
+        log.info("[{}] {}{}", traceId.getId(), addSpace(START_PREFIX, traceId.getLevel()), message);
+
         return new TraceStatus(traceId, startTimeMs, message);
     }
 
@@ -45,17 +38,11 @@ public class ThreadLocalLogTrace implements LogTrace{
         long resultTimeMs = stopTimeMs - status.getStartTimeMs();
         TraceId traceId = status.getTraceId();
         if (e == null) {
-            log.info("[{}] {}{} time={}ms",
-                    traceId.getId(),
-                    addSpace(COMPLETE_PREFIX,
-                            traceId.getLevel()),
-                    status.getMessage(),
-                    resultTimeMs);
+            log.info("[{}] {}{} time={}ms", traceId.getId(), addSpace(COMPLETE_PREFIX, traceId.getLevel()), status.getMessage(), resultTimeMs);
         } else {
-            log.info("[{}] {}{} time={}ms ex={}", traceId.getId(),
-                    addSpace(EX_PREFIX, traceId.getLevel()), status.getMessage(), resultTimeMs,
-                    e.toString());
+            log.info("[{}] {}{} time={}ms ex={}", traceId.getId(), addSpace(EX_PREFIX, traceId.getLevel()), status.getMessage(), resultTimeMs, e.toString());
         }
+
         releaseTraceId();
     }
 
@@ -68,11 +55,10 @@ public class ThreadLocalLogTrace implements LogTrace{
         }
     }
 
-    /** 사용 후 ThreadLocal remove 해줘야함. */
     private void releaseTraceId() {
         TraceId traceId = traceIdHolder.get();
         if (traceId.isFirstLevel()) {
-            traceIdHolder.remove(); //destroy
+            traceIdHolder.remove();//destroy
         } else {
             traceIdHolder.set(traceId.createPreviousId());
         }
@@ -85,5 +71,4 @@ public class ThreadLocalLogTrace implements LogTrace{
         }
         return sb.toString();
     }
-
 }
