@@ -10,7 +10,7 @@ import spring.playground.advanced.trace.strategy.code.StrategyLogic2;
 public class ContextV1Test {
 
     /**
-     * 전략 패턴 ,,
+     * 전략 패턴 ,
      * using lambda -> 인터페이스에 메서드가 1개만 있어야함.
      * Strategy 인터페이스의 call 메서드의 구현체가 아래와 같다 보면 되는 것
      */
