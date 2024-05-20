@@ -15,7 +15,9 @@ public class MessageDecorator implements Component {
     public String operation() {
         log.info("MessageDecorator 실행");
         String result = component.operation();
-        String decoResult = "*****" + result + "*****"; log.info("MessageDecorator 꾸미기 적용 전 = {}, 적용 후 = {}", result,
+        String decoResult = "*****" + result + "*****";  //real의 return값을 꾸밀 수 있는거지
+        log.info("MessageDecorator 꾸미기 적용 전 = {}, 적용 후 = {}",
+                result,
                 decoResult);
         return decoResult;
     }

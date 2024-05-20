@@ -2,10 +2,7 @@ package spring.playground.proxy.pureproxy.decorator;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import spring.playground.proxy.pureproxy.decorator.code.Component;
-import spring.playground.proxy.pureproxy.decorator.code.DecoratorPatternClient;
-import spring.playground.proxy.pureproxy.decorator.code.MessageDecorator;
-import spring.playground.proxy.pureproxy.decorator.code.RealComponent;
+import spring.playground.proxy.pureproxy.decorator.code.*;
 
 @Slf4j
 public class DecoratorPatternTest {
@@ -25,6 +22,16 @@ public class DecoratorPatternTest {
         MessageDecorator messageDecorator = new MessageDecorator(realComponent);
         DecoratorPatternClient client = new
                 DecoratorPatternClient(messageDecorator);
+        client.execute();
+    }
+
+    /** client -> timeDecorator -> messageDecorator -> realComponent */
+    @Test
+    void decorator2() {
+        Component realComponent = new RealComponent();
+        Component messageDecorator = new MessageDecorator(realComponent);
+        Component timeDecorator = new TimeDecorator(messageDecorator);
+        DecoratorPatternClient client = new DecoratorPatternClient(timeDecorator);
         client.execute();
     }
 
