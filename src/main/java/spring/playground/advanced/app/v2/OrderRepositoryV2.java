@@ -1,6 +1,5 @@
 package spring.playground.advanced.app.v2;
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import spring.playground.advanced.trace.TraceId;
