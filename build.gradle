@@ -44,6 +44,7 @@ dependencies {
 	//테스트환경 lombok 사용
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
+
 }
 
 tasks.named('test') {
