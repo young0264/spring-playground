@@ -1,4 +1,4 @@
-package spring.playground.proxy.pureproxy.proxy.code;
+package spring.playground.proxy.pureproxy.decorator.code;
 
 import lombok.extern.slf4j.Slf4j;
 
