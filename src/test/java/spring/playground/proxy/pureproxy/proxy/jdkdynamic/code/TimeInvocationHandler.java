@@ -1,6 +1,7 @@
 package spring.playground.proxy.pureproxy.proxy.jdkdynamic.code;
 
 import lombok.extern.slf4j.Slf4j;
+import org.aopalliance.intercept.MethodInterceptor;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

@@ -7,6 +7,7 @@ import spring.playground.proxy.trace.logtrace.LogTrace;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
+/** 특정 조건을 만족할 때만 로그를 남기는 기능 개발 */
 public class LogTraceFilterHandler implements InvocationHandler {
 
     private final Object target;
