@@ -13,6 +13,7 @@ public class OrderControllerV1Impl implements OrderControllerV1 {
 
     @Override
     public String request(String itemId) {
+        log.info("controller @Slf4j start");
         orderServiceV1.orderItem(itemId);
         return "ok";
     }

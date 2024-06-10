@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public interface OrderControllerV1 {
+    public int t1 = 123;
     @GetMapping("/v1/request")
     String request(@RequestParam("itemId") String itemId);
 
