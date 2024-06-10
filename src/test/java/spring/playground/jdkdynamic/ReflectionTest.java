@@ -5,14 +5,41 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
 
+/** 시대 역행의 대명사 reflection
+ * 컴파일 시점에 오류를 못잡아.
+ **/
 @Slf4j
 public class ReflectionTest {
+
+
+    @Test
+    void reflection2() throws Exception {
+        Class classHello =
+                Class.forName("spring.playground.jdkdynamic.ReflectionTest$Hello");
+
+        Hello target = new Hello();
+
+        Method methodCallA = classHello.getMethod("callA");
+        dynamicCall(methodCallA, target);
+
+        Method methodCallB = classHello.getMethod("callB");
+        dynamicCall(methodCallB, target);
+    }
+
+    /** 메서드와 target 정보를 같이 넘기는 private method로 모듈화 */
+    private void dynamicCall(Method method, Object target) throws Exception {
+        log.info("start");
+        Object result = method.invoke(target);
+        log.info("result={}", result);
+    }
+
 
     @Test
     void reflection1() throws Exception {
         //클래스 정보
         Class classHello =
                 Class.forName("spring.playground.jdkdynamic.ReflectionTest$Hello");
+
         Hello target = new Hello();
 
         //callA 메서드 정보
