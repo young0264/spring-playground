@@ -3,8 +3,28 @@ package spring.playground.jdkdynamic;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Method;
+
 @Slf4j
 public class ReflectionTest {
+
+    @Test
+    void reflection1() throws Exception {
+        //클래스 정보
+        Class classHello =
+                Class.forName("spring.playground.jdkdynamic.ReflectionTest$Hello");
+        Hello target = new Hello();
+
+        //callA 메서드 정보
+        Method methodCallA = classHello.getMethod("callA");
+        Object result1 = methodCallA.invoke(target);
+        log.info("result1={}", result1);
+
+        //callB 메서드 정보
+        Method methodCallB = classHello.getMethod("callB");
+        Object result2 = methodCallB.invoke(target);
+        log.info("result2={}", result2);
+    }
 
     @Test
     void reflection0() {
