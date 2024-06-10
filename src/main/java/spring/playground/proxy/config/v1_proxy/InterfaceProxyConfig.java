@@ -13,7 +13,7 @@ public class InterfaceProxyConfig {
 
     @Bean
     public OrderControllerV1 orderController(LogTrace logTrace) {
-        System.out.println("OrderControllerV1");
+        System.out.println("OrderControllerV1 bean inject");
         OrderControllerV1Impl controllerImpl = new
                 OrderControllerV1Impl(orderService(logTrace));
         return new OrderControllerInterfaceProxy(controllerImpl, logTrace);
@@ -21,6 +21,7 @@ public class InterfaceProxyConfig {
 
     @Bean
     public OrderServiceV1 orderService(LogTrace logTrace) {
+        System.out.println("orderService bean inject");
         OrderServiceV1Impl serviceImpl = new
                 OrderServiceV1Impl(orderRepository(logTrace));
         return new OrderServiceInterfaceProxy(serviceImpl, logTrace);
@@ -28,6 +29,7 @@ public class InterfaceProxyConfig {
 
     @Bean
     public OrderRepositoryV1 orderRepository(LogTrace logTrace) {
+        System.out.println("orderRepository bean inject");
         OrderRepositoryV1Impl repositoryImpl = new OrderRepositoryV1Impl();
         return new OrderRepositoryInterfaceProxy(repositoryImpl, logTrace);
     }
