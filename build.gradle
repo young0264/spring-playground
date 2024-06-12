@@ -45,6 +45,10 @@ dependencies {
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
 
+	// feign client 사용
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.1.0'
+
+
 }
 
 tasks.named('test') {
