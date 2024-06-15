@@ -17,7 +17,8 @@ import spring.playground.proxy.trace.logtrace.ThreadLocalLogTrace;
 //@Import(ConcreteProxyConfig.class)
 //@Import(DynamicProxyBasicConfig.class)
 //@Import(DynamicProxyFilterConfig.class)
-@Import(ProxyFactoryConfigV1.class)
+//@Import(ProxyFactoryConfigV1.class)
+@Import(DynamicProxyBasicConfig.class)
 @SpringBootApplication(scanBasePackages = "spring.playground.proxy.app") //주의
 public class ProxyApplication {
 
