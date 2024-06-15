@@ -24,18 +24,18 @@ public class ProxyFactoryTest {
 
         ServiceInterface proxy = (ServiceInterface) proxyFactory.getProxy();
 
-        log.info("targetClass={}", target.getClass());
-        log.info("proxyClass={}", proxy.getClass());
+        log.info("targetClass = {}", target.getClass());
+        log.info("proxyClass = {}", proxy.getClass());
 
         proxy.save(); // 동작 시점.
 
-        //프록시 팩토리를 통해서 프록시가 생성되면 JDK 동적 프록시나, CGLIB 모두 참
+        //프록시 팩토리를 통해서 프록시가 생성되면 JDK 동적 프록시나, CGLIB 모두 true
         assertThat(AopUtils.isAopProxy(proxy)).isTrue();
 
-        //프록시 팩토리를 통해서 프록시가 생성 -> jdk 동적 프록시 참
+        //프록시 팩토리를 통해서 프록시가 생성 -> jdk 동적 프록시 true
         assertThat(AopUtils.isJdkDynamicProxy(proxy)).isTrue();
 
-        //프록시 팩토리를 통해서 프록시가 생성. -> CGLIB 동적 프록시 참
+        //프록시 팩토리를 통해서 프록시가 생성. -> CGLIB 동적 프록시 false
         assertThat(AopUtils.isCglibProxy(proxy)).isFalse();
     }
 
@@ -48,10 +48,32 @@ public class ProxyFactoryTest {
 
         ConcreteService proxy = (ConcreteService) proxyFactory.getProxy();
 
-        log.info("targetClass={}", target.getClass());
-        log.info("proxyClass={}", proxy.getClass());
+        log.info("targetClass = {}", target.getClass());
+        log.info("proxyClass = {}", proxy.getClass());
 
         proxy.call();
+
+        assertThat(AopUtils.isAopProxy(proxy)).isTrue();
+        assertThat(AopUtils.isJdkDynamicProxy(proxy)).isFalse(); //jdk 동적 프록시 false
+        assertThat(AopUtils.isCglibProxy(proxy)).isTrue();
+    }
+
+    @Test
+    @DisplayName("ProxyTargetClass 옵션을 사용하면 인터페이스가 있어도 CGLIB를 사용하고, 클래스 기반 프록시 사용")
+    void proxyTargetClass() {
+        ServiceInterface target = new ServiceImpl();
+        ProxyFactory proxyFactory = new ProxyFactory(target);
+
+        // 추가.. 인터페이스가 있어도 강제로 CGLIB을 사용. 인터페이스가 아닌 클래스 기반의 프록시를 생성해줌
+        proxyFactory.setProxyTargetClass(true);
+        proxyFactory.addAdvice(new TimeAdvice());
+
+        ServiceInterface proxy = (ServiceInterface) proxyFactory.getProxy();
+
+        log.info("targetClass = {}", target.getClass());
+        log.info("proxyClass = {}", proxy.getClass());
+
+        proxy.save();
 
         assertThat(AopUtils.isAopProxy(proxy)).isTrue();
         assertThat(AopUtils.isJdkDynamicProxy(proxy)).isFalse();
