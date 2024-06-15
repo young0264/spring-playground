@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.net.URI;
 
-@FeignClient(name = "alarm-feign", url = "http://tps-notificator/notificator/api/sse/v1", configuration = FeignConfigGlobal.class)
+@FeignClient(name = "alarm-feign", url = "http://tps-notificator/notificator/api/sse/v1")
+//@FeignClient(name = "alarm-feign", url = "http://tps-notificator/notificator/api/sse/v1", configuration = FeignConfigGlobal.class)
 public interface AlarmClientWithNotificator {
 
     /**
