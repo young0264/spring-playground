@@ -36,7 +36,6 @@ public class AdvisorTest {
         proxy.find(); //setMappedNames에 넣어주지 않으면 find는 advisor가 적용되지 않음.
     }
 
-
     @Test
     void advisorTest1() {
         ServiceInterface target = new ServiceImpl();
@@ -55,8 +54,9 @@ public class AdvisorTest {
     void advisorTest2() {
         ServiceImpl target = new ServiceImpl();
         ProxyFactory proxyFactory = new ProxyFactory(target);
-        DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor(new
-                MyPointcut(), new TimeAdvice());
+        DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor(
+                  new MyPointcut()
+                , new TimeAdvice());
         proxyFactory.addAdvisor(advisor);
         ServiceInterface proxy = (ServiceInterface) proxyFactory.getProxy();
         proxy.save();
@@ -88,8 +88,7 @@ public class AdvisorTest {
             return false;
         }
         @Override
-        public boolean matches(Method method, Class<?> targetClass, Object... args)
-        {
+        public boolean matches(Method method, Class<?> targetClass, Object... args) {
             throw new UnsupportedOperationException();
         }
     }
