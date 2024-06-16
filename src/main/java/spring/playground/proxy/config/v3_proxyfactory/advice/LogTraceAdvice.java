@@ -3,8 +3,10 @@ package spring.playground.proxy.config.v3_proxyfactory.advice;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import spring.playground.proxy.trace.TraceStatus;
-import spring.playground.proxy.trace.logtrace.LogTrace;
+import spring.playground.advanced.trace.TraceStatus;
+import spring.playground.advanced.trace.logtrace.LogTrace;
+//import spring.playground.proxy.trace.TraceStatus;
+//import spring.playground.proxy.trace.logtrace.LogTrace;
 
 import java.lang.reflect.Method;
 
@@ -21,8 +23,10 @@ public class LogTraceAdvice implements MethodInterceptor {
         TraceStatus status = null;
         try {
             Method method = invocation.getMethod();
-            String message = method.getDeclaringClass().getSimpleName() + "."
-                    + method.getName() + "()";
+            String message = method.getDeclaringClass().getSimpleName()
+                    + "."
+                    + method.getName()
+                    + "()";
             status = logTrace.begin(message);
             //로직 호출
             Object result = invocation.proceed();
@@ -33,4 +37,5 @@ public class LogTraceAdvice implements MethodInterceptor {
             throw e;
         }
     }
+
 }

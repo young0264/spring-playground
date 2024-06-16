@@ -1,6 +1,7 @@
 package spring.playground.advanced.app.v2;
 
 
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import spring.playground.advanced.app.v1.OrderRepositoryV1;

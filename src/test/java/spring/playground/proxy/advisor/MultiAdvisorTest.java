@@ -28,8 +28,10 @@ public class MultiAdvisorTest {
 
         ServiceInterface target = new ServiceImpl();
         ProxyFactory proxyFactory1 = new ProxyFactory(target);
+
         proxyFactory1.addAdvisor(advisor2);
         proxyFactory1.addAdvisor(advisor1);
+
         ServiceInterface proxy = (ServiceInterface) proxyFactory1.getProxy();
         //실행
         proxy.save();
@@ -59,7 +61,7 @@ public class MultiAdvisorTest {
 //        log.info("target getClass : " + target.getClass());
 //        log.info("proxy1 toString : " + proxy1.toString());
 //        log.info("proxy1 getClass : " + proxy1.getClass());
-        //프록시2 생성, target -> proxy1 입력
+        //프록시2 생성, target -> proxy1 입력 .. 매번 ProxyFactory를 생성한다는 단점
         ProxyFactory proxyFactory2 = new ProxyFactory(proxy1);  //ServiceInterface proxy를 proxy로
         DefaultPointcutAdvisor advisor2
                 = new DefaultPointcutAdvisor(Pointcut.TRUE, new Advice2()); //Advice2
