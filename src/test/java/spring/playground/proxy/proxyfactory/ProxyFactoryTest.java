@@ -80,4 +80,6 @@ public class ProxyFactoryTest {
         assertThat(AopUtils.isCglibProxy(proxy)).isTrue();
     }
 
+    /** 스프링부트는 AOP 적용시 기본적으로 ProxyTargetClass가 true임 */
+
 }
