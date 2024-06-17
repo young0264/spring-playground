@@ -7,9 +7,10 @@ import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.aop.support.NameMatchMethodPointcut;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import spring.playground.advanced.trace.logtrace.LogTrace;
+//import spring.playground.advanced.trace.logtrace.LogTrace;
 import spring.playground.proxy.app.v1.*;
 import spring.playground.proxy.config.v3_proxyfactory.advice.LogTraceAdvice;
+import spring.playground.proxy.trace.logtrace.LogTrace;
 //import spring.playground.proxy.trace.logtrace.LogTrace;
 
 @Slf4j

@@ -9,8 +9,8 @@ import spring.playground.advanced.app.v2.OrderControllerV2;
 import spring.playground.advanced.app.v2.OrderRepositoryV2;
 import spring.playground.advanced.app.v2.OrderServiceV2;
 import spring.playground.proxy.config.v3_proxyfactory.advice.LogTraceAdvice;
-import spring.playground.advanced.trace.logtrace.LogTrace;
-//import spring.playground.proxy.trace.logtrace.LogTrace;
+//import spring.playground.advanced.trace.logtrace.LogTrace;
+import spring.playground.proxy.trace.logtrace.LogTrace;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
