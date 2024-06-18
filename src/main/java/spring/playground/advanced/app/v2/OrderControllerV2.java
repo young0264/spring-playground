@@ -7,17 +7,19 @@ import spring.playground.advanced.trace.TraceStatus;
 import spring.playground.advanced.trace.log.LogTraceV2;
 
 @Slf4j
-@RequestMapping
-@ResponseBody
+//@RequestMapping
+//@ResponseBody
+@RestController
+@RequiredArgsConstructor
 public class OrderControllerV2 {
     private final OrderServiceV2 orderService;
-    public OrderControllerV2(OrderServiceV2 orderService) {
-        this.orderService = orderService;
-    }
+//    public OrderControllerV2(OrderServiceV2 orderService) {
+//        this.orderService = orderService;
+//    }
     @GetMapping("/v2/request")
-    public String request(@RequestParam String itemId) {
+    public String request(@RequestParam("itemId") String itemId) {
         System.out.println("OrderControllerV2 start");
-//        orderService.orderItem(itemId);
+        orderService.orderItem(itemId);
         return "ok";
     }
     @GetMapping("/v2/no-log")

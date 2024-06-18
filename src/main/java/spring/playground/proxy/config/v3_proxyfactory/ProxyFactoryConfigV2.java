@@ -9,7 +9,6 @@ import spring.playground.advanced.app.v2.OrderControllerV2;
 import spring.playground.advanced.app.v2.OrderRepositoryV2;
 import spring.playground.advanced.app.v2.OrderServiceV2;
 import spring.playground.proxy.config.v3_proxyfactory.advice.LogTraceAdvice;
-//import spring.playground.advanced.trace.logtrace.LogTrace;
 import spring.playground.proxy.trace.logtrace.LogTrace;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +20,8 @@ public class ProxyFactoryConfigV2 {
 
     @Bean
     public OrderControllerV2 orderControllerV2(LogTrace logTrace) {
+
+        log.info("orderControllerV2 start");
         OrderControllerV2 orderController = new
                 OrderControllerV2(orderServiceV2(logTrace));
         ProxyFactory factory = new ProxyFactory(orderController);
@@ -30,6 +31,7 @@ public class ProxyFactoryConfigV2 {
                 orderController.getClass());
         return proxy;
     }
+
     @Bean
     public OrderServiceV2 orderServiceV2(LogTrace logTrace) {
         OrderServiceV2 orderService = new
@@ -41,6 +43,7 @@ public class ProxyFactoryConfigV2 {
                 orderService.getClass());
         return proxy;
     }
+
     @Bean
     public OrderRepositoryV2 orderRepositoryV2(LogTrace logTrace) {
         OrderRepositoryV2 orderRepository = new OrderRepositoryV2();
@@ -51,6 +54,7 @@ public class ProxyFactoryConfigV2 {
                 orderRepository.getClass());
         return proxy;
     }
+
     private Advisor getAdvisor(LogTrace logTrace) {
         //pointcut
         NameMatchMethodPointcut pointcut = new NameMatchMethodPointcut();
@@ -60,4 +64,5 @@ public class ProxyFactoryConfigV2 {
         //advisor = pointcut + advice
         return new DefaultPointcutAdvisor(pointcut, advice);
     }
+
 }
