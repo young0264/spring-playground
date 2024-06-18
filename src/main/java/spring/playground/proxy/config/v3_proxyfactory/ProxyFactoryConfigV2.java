@@ -21,7 +21,7 @@ public class ProxyFactoryConfigV2 {
     @Bean
     public OrderControllerV2 orderControllerV2(LogTrace logTrace) {
 
-        log.info("orderControllerV2 start");
+        log.info("ProxyFactoryConfigV2 orderControllerV2 start");
         OrderControllerV2 orderController = new
                 OrderControllerV2(orderServiceV2(logTrace));
         ProxyFactory factory = new ProxyFactory(orderController);
