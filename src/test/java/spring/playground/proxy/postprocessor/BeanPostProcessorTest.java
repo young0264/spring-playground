@@ -11,7 +11,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@Slf4j
 public class BeanPostProcessorTest {
+
+    @Test
+    void addMerge1() {
+        log.info("add : merge#1");
+    }
 
     @Test
     void postProcessor() {
