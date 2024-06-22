@@ -16,8 +16,8 @@ public class BeanPostProcessorTest {
 
 
     @Test
-    void addMerge3() {
-        log.info("add : merge #3");
+    void rebaseExam1() {
+        log.info("add : rebase #1");
     }
 
     @Test
