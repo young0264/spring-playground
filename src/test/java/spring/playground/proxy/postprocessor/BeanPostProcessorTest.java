@@ -16,6 +16,11 @@ public class BeanPostProcessorTest {
 
 
     @Test
+    void addRebase2() {
+        log.info("add : rebase #2");
+    }
+
+    @Test
     void rebaseExam1() {
         log.info("add : rebase #1");
     }
