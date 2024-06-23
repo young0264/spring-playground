@@ -26,6 +26,11 @@ public class BeanPostProcessorTest {
     }
 
     @Test
+    void rebaseExam3() {
+        log.info("add : rebase #3");
+    }
+
+    @Test
     void postProcessor() {
         ApplicationContext applicationContext = new
                 AnnotationConfigApplicationContext(BeanPostProcessorConfig.class);
