@@ -12,8 +12,13 @@ public class RebaseBranchOrigin1 {
     }
 
     @Test
-    void branch2_2FromOriginBranch1() {
-        log.info("Changes in origin branch2-2");
+    void branch2FromOriginBranch1() {
+        log.info("Changes in origin branch2");
+    }
+
+    @Test
+    void originBranch3() {
+        log.info("Changes in origin branch3");
     }
 
 }
