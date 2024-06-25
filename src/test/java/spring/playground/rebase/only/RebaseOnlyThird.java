@@ -1,4 +1,4 @@
 package spring.playground.rebase.only;
 
-public class RebaseOnlySecond {
+public class RebaseOnlyThird {
 }
