@@ -28,7 +28,7 @@ TO-BE
                         - <- RebaseBranch6: RebaseBranchSixthTest.class 생성
 
 ---
-TO-BE #1 (with my hand)
+TO-BE #1 (handmade with merge)
 - 5번 checkout
 - 4번 rebase
 - 6번 checkout
