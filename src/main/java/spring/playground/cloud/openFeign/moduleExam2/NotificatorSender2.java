@@ -1,6 +1,5 @@
 package spring.playground.cloud.openFeign.moduleExam2;//
-//package org.okestro.tps.notificator.infrastructure.components;
-//
+
 //import org.okestro.tps.common_lib.infrastructure.client.IntegrationClientWithNotificator;
 //import org.okestro.tps.common_lib.message.TpsResponse;
 //import org.okestro.tps.common_lib.message.alarmModel.dto.AllClientsAlarmDto;

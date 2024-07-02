@@ -27,6 +27,8 @@ public class NotificatorSender1 {
 //    }
     @PostConstruct
     public void init() {
+        //TODO configuration 동적 설정하는 방법이 있는지 찾아보기.
+        //TODO ㄴ 멀티모듈 환경일 때 각 모듈에서 configuration을 하고 싶음.
         integrationClientWithNotificator = Feign.builder()
                 .target(IntegrationClientWithNotificator.class, requestUrl);
     }
